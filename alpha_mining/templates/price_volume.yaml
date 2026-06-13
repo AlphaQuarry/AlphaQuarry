@@ -1,0 +1,8 @@
+- template_id: TPL-101
+  family: price_volume
+  expression: "rank(ts_mean({field}, {d_short}) - ts_mean({field}, {d_long}))"
+  placeholders:
+    field: ["close"]
+    d_short: [5]
+    d_long: [22]
+  tags: ["price_volume"]

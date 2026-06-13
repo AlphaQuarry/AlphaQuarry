@@ -1,0 +1,13 @@
+- template_id: TPL-701
+  family: composite
+  expression: "rank(group_rank(ts_rank({field_a}, {d_a}), {group}) * ts_zscore({field_b}, {d_b}) * rank(-ts_delta({field_c}, {d_c})))"
+  placeholders:
+    field_a: ["volume"]
+    d_a: [22]
+    group: ["industry"]
+    field_b: ["close"]
+    d_b: [66]
+    field_c: ["close"]
+    d_c: [5]
+  required_groups: ["industry"]
+  tags: ["composite"]

@@ -1,0 +1,7 @@
+- template_id: TPL-401
+  family: analyst
+  expression: "ts_delta(vec_avg({field}), {d})"
+  placeholders:
+    field: ["analyst_eps"]
+    d: [22]
+  tags: ["analyst", "vector"]

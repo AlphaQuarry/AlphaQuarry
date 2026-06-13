@@ -1,0 +1,250 @@
+universe_name: cn_all
+universe_base_dir: data/alpha_universe_store
+
+batch_size: 5
+request_new_alphas: 20
+max_new_alphas_per_chunk: 5
+compute_chunk_size: 5
+max_eval_expressions: 80
+search_mode: layered_v2
+use_signature_generator: true
+enable_stateful_phase2_ops: false
+layer_max_order: 4
+layer_max_candidates: 500
+layer_budgets:
+  L0: 32
+  L1: 160
+  L2: 160
+  L3: 100
+  L4: 80
+layer_windows: [5, 10, 22, 66, 132]
+layer_gate_families:
+  - liquidity_activity
+  - moneyflow_pressure
+  - price_trend
+  - industry_activity
+layer_gate_max_total: 24
+layer_gate_max_per_family: 6
+layer_gate_seed_max: 18
+layer_enable_event_gates: false
+layer_enable_bucket_groups: true
+layer_bucket_max_groups: 12
+layer_bucket_max_composite_groups: 6
+layer_bucket_ranges:
+  - "0,1,0.2"
+layer_bucket_l1_max_total: 24
+layer_bucket_l2_max_total: 20
+layer_enable_recipe_lite: true
+layer_recipe_max_total: 80
+layer_recipe_max_per_family: 16
+layer_role_pair_max_total: 80
+layer_cross_family_pair_ratio: 0.15
+field_profile_lite_enabled: true
+field_profile_lite_min_coverage: 0.20
+field_profile_lite_min_finite_rate: 0.80
+field_profile_lite_top_fields_per_family: 50
+feedback_policy_lite_enabled: true
+bucket_quality_lite_enabled: true
+bucket_quality_max_evaluations: 80
+bucket_quality_min_coverage: 0.50
+bucket_quality_min_median_group_size: 5
+bucket_quality_min_group_count: 3
+bucket_quality_max_nan_group_ratio: 0.30
+bucket_quality_reject_low_quality_composite: true
+bucket_quality_reject_low_quality_plain: false
+layer_operator_tier: stable
+layer_operator_expansion_max_total: 100
+layer_selection_min_ratio:
+  L1: 0.20
+  L2: 0.20
+  L3: 0.15
+  L4: 0.15
+layer_selection_max_ratio:
+  L0: 0.08
+structure_selection_min_ratio:
+  bucket: 0.05
+  gate: 0.05
+  recipe: 0.05
+  role_pair: 0.05
+generation_diagnostics_enabled: true
+
+output_alpha_dtype: float32
+drop_all_nan_alpha_rows: true
+enable_purge_after_analysis: true
+panel_cache_max_size: 64
+candidate_artifact_retention_enabled: true
+candidate_artifact_retention_max_batches: 200
+candidate_artifact_retention_days: 30
+analysis_artifact_retention_enabled: false
+analysis_artifact_retention_max_runs: 120
+analysis_artifact_retention_days: 90
+run_health_retention_enabled: true
+run_health_retention_max_lines: 5000
+run_health_retention_days: 90
+registry_health_check: false
+
+date_col: date
+code_col: code
+group_fields:
+  - industry
+  - sector
+vector_fields: []
+base_frame_cols:
+  - date
+  - code
+  - pct_chg
+  - circ_mv
+
+analysis_level_mode: light_then_full_on_survivors
+analysis_period: 1
+analysis_layers: 10
+effectiveness_ic_abs_min: 0.015
+effectiveness_ir_abs_min: 0.25
+effectiveness_sharpe_min: 0.40
+effectiveness_coverage_min: 0.60
+effectiveness_turnover_max: 0.80
+effectiveness_min_score: 50.0
+long10_count: 10
+analysis_is_timeseries: true
+analysis_return_col: pct_chg
+analysis_market_value_column: circ_mv
+analysis_do_neutralize: false
+analysis_do_standardize: false
+analysis_max_lag: 10
+analysis_include_robustness: true
+analysis_robust_periods:
+  - 1
+  - 5
+  - 10
+  - 20
+
+phase_metrics:
+  enabled: true
+  min_obs: 1
+  feedback_phase: train
+  test_default_visible: false
+visualization_png:
+  enabled: false
+benchmark:
+  enabled: true
+  code: "000300.SH"
+  view: v_project_index_daily
+  date_col: date
+  code_col: code
+  close_col: close
+  return_col: return
+sample_split:
+  train_start: "2016-01-01"
+  train_end: "2024-12-31"
+  validation_start: "2025-01-01"
+  validation_end: "2025-12-31"
+  oos_start: "2026-01-01"
+
+analysis_return_semantics:
+  enabled: true
+  signal_delay_source: mining_config.simulation.delay
+  base_return_col: pct_chg
+  note: raw signal t -> delayed exposure t+1 -> pct_chg_1d at t+1 = close[t+2]/close[t+1]-1
+
+execution_return_audit:
+  enabled: false
+  price_col: close
+  prefix: ret_exec_cc_audit
+
+field_universe:
+  allow_return_history_fields: false
+  exclude_label_like_fields: true
+  exclude_fields:
+    - pct_chg
+    - ret_1d
+    - future_return
+    - ret_exec_cc_1d
+    - ret_exec_cc_audit_1d
+    - target
+    - label
+    - universe
+
+candidate_family_budget:
+  single_ts: 0.30
+  single_cross: 0.15
+  group: 0.20
+  pair: 0.20
+  conditional: 0.05
+  vector: 0.05
+  composite: 0.05
+
+pair_generation:
+  enabled: true
+  max_pairs: 200
+  windows: [5, 10, 22, 66, 132]
+  eps: 1.0e-6
+  prefer_cross_role_pairs: true
+  cooldown_lookback: 10
+
+prefilter:
+  parse_check: true
+  type_check: true
+  leakage_check: true
+  registered_operator_check: true
+  reject_naked_division: true
+  enable_canonicalization: true
+  enable_sample_prefilter: false
+  stratified: true
+  min_coverage: 0.30
+  max_inf_ratio: 0.01
+
+feedback:
+  enabled: true
+  exploit_ratio: 0.55
+  min_explore_ratio: 0.30
+  lookback_batches: 50
+  cooldown_lookback: 10
+
+candidate_generation:
+  enable_candidate_ranking: true
+  score_weights_json: ""
+  complexity_weight: 0.10
+  enable_canonicalization: true
+  enable_subtree_mutation: false
+  enable_feedback_mutation: false
+  mutation_budget_ratio: 0.15
+  mutation_max_children_per_parent: 3
+  mutation_fragment_cooldown_batches: 3
+  mutation_fragment_max_age_batches: 50
+  mutation_stateful_ratio_cap: 0.10
+
+idle_sleep_seconds: 5
+error_backoff_seconds: 10
+max_iterations: 1
+max_restart_retry: 2
+lock_timeout_seconds: 3600
+
+# Source reproducibility metadata
+source_backend: duckdb
+duckdb_path: data/duckdb/market.duckdb
+source_view: v_project_panel_cn_a
+snapshot_path: ""
+source_date_range:
+  - ""
+  - ""
+field_catalog_version: v1
+manifest_schema_version: v2
+enable_source_chunk_loading: true
+source_chunk_mem_warn_mb: 2560
+source_chunk_mem_hard_limit_mb: 4096
+search_field_source: field_catalog
+moneyflow_source: moneyflow
+field_preprocessing:
+  enabled: true
+  mode: expression_wrapper
+  ts_backfill_window: 120
+  winsorize_std: 4.0
+  exempt_from_complexity: true
+# DuckDB runtime safeguards (optional)
+duckdb_memory_limit: ""
+duckdb_threads: 0
+duckdb_temp_directory: ""
+duckdb_max_temp_directory_size: ""
+run_filters:
+  universe_only: true
+  include_bj: true

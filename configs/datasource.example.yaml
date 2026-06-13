@@ -1,0 +1,86 @@
+# ============================================================
+# 数据源配置文件
+# 复制为 datasource.local.yaml 并填入你的配置:
+#   cp configs/datasource.example.yaml configs/datasource.local.yaml
+# ============================================================
+
+# 数据查询后端: duckdb | file
+source_backend: duckdb
+# DuckDB 中的主查询视图名
+source_view: v_project_panel_cn_a
+# 复权模式: qfq (前复权) | hfq (后复权)
+adjust_mode: qfq
+# 资金流数据源: moneyflow (5000积分) | moneyflow_ths (5000积分)
+moneyflow_source: moneyflow
+# 字段目录版本
+field_catalog_version: v1
+# 运行时过滤器
+run_filters:
+  universe_only: true
+  include_bj: true
+
+# ---- 路径配置 ----
+paths:
+  lake_root: data/lake
+  duckdb_path: data/duckdb/market.duckdb
+  vendor_raw_subdir: vendor_raw/tushare
+  curated_subdir: curated
+  snapshots_subdir: snapshots
+  meta_subdir: meta
+
+# ---- Universe 过滤 ----
+universe:
+  # 上市至少 N 天后纳入
+  min_days_since_listed: 60
+  # 排除 ST 股
+  exclude_st: true
+  # 包含北交所
+  include_bj: true
+
+# ---- 可交易性约束 ----
+tradability:
+  require_close: true
+  require_positive_volume: true
+  require_positive_amount: true
+
+# ---- 字段目录 ----
+field_catalog:
+  default_enabled_categories:
+    - price
+    - return
+    - liquidity
+    - valuation
+    - industry
+    - event
+    - moneyflow
+    - chip
+    - technical
+    - auction
+    - analyst
+  non_searchable_fields:
+    - date
+    - code
+    - universe
+    - tradable
+    - is_st
+    - is_suspended
+    - days_since_listed
+
+# ---- 增量更新 ----
+update:
+  # 自动回溯交易日数 (增量更新时)
+  lookback_trade_days: 5
+
+# ---- Tushare 配置 ----
+# 推荐: token 留空，通过环境变量设置 (export TUSHARE_TOKEN=xxx)
+# 积分要求: 详见 docs/tushare_points_reference.md
+tushare:
+  token: ""
+  # 自定义 API 端点，留空使用官方默认
+  http_url: ""
+  # 重试次数
+  max_retries: 3
+  # 重试基础间隔 (秒，实际间隔会指数退避)
+  retry_sleep_seconds: 1.5
+  # 请求间暂停 (秒，防止触发限频)
+  request_pause_seconds: 0.0

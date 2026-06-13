@@ -1,0 +1,61 @@
+schema_version: 1
+universe: cn_all
+store_root: data/alpha_universe_store
+
+data:
+  duckdb_path: data/duckdb/market.duckdb
+  source_view: v_project_panel_cn_a
+  date_col: date
+  code_col: code
+  min_field_non_null_rate: 0.60
+  strict_available_at: false
+  catalog_missing_policy: warn
+  market_value_missing_policy: block
+
+superalpha:
+  max_active: 5
+  live_window_trade_days: 320
+  lookback_buffer_days: 5
+  max_expression_lookback_days: 720
+
+portfolio:
+  target_count: 100
+  min_target_count: 50
+  min_target_fill_ratio: 0.70
+  max_single_name_weight: 0.02
+  cash_buffer_ratio: 0.02
+
+tradability:
+  enabled: true
+  strict_required_fields: true
+  market_value_any_of: [circ_mv, total_mv, float_mv]
+  include_bj: false
+
+account:
+  default_account_id: paper_account
+  position_path: data/alpha_universe_store/cn_all/live/account/positions_current.csv
+  max_position_staleness_trade_days: 1
+  stale_position_policy: block
+
+orders:
+  enabled: true
+  required: false
+  require_single_superalpha: true
+  board_lot_size: 100
+  min_order_value: 5000
+  preserve_unsellable_positions: true
+  target_gross_exposure: 0.98
+
+fee:
+  buy_fee_bps: 2.5
+  sell_fee_bps: 2.5
+  stamp_tax_bps: 5.0
+  min_commission: 5.0
+
+parity:
+  enabled: false
+  strict: false
+  min_rank_corr: 0.98
+  min_top_overlap: 0.80
+  min_bottom_overlap: 0.80
+  max_missing_ratio_delta: 0.02

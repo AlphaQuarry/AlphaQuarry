@@ -1,0 +1,243 @@
+interface,doc_id,tushare_field,local_field,local_table,in_project_panel,category,notes
+daily,,ts_code,code,facts/market_daily,yes,identity,stock code
+daily,,trade_date,date,facts/market_daily,yes,identity,trade date
+daily,,open,open,facts/market_daily,yes,price,canonical adjusted by local adjust pipeline
+daily,,high,high,facts/market_daily,yes,price,canonical adjusted by local adjust pipeline
+daily,,low,low,facts/market_daily,yes,price,canonical adjusted by local adjust pipeline
+daily,,close,close,facts/market_daily,yes,price,canonical adjusted by local adjust pipeline
+daily,,pct_chg,pct_chg,facts/market_daily,yes,return,analysis return source
+daily,,vol,volume,facts/market_daily,yes,liquidity,standardized to shares
+daily,,amount,amount,facts/market_daily,yes,liquidity,standardized to CNY
+daily_basic,,turnover_rate,turnover_rate,facts/market_daily_basic,yes,liquidity,optional market field
+daily_basic,,turnover_rate_f,turnover_rate_f,facts/market_daily_basic,yes,liquidity,optional market field
+daily_basic,,volume_ratio,volume_ratio,facts/market_daily_basic,yes,liquidity,optional market field
+daily_basic,,pe,pe,facts/market_daily_basic,yes,valuation,optional market field
+daily_basic,,pe_ttm,pe_ttm,facts/market_daily_basic,yes,valuation,optional market field
+daily_basic,,pb,pb,facts/market_daily_basic,yes,valuation,optional market field
+daily_basic,,ps,ps,facts/market_daily_basic,yes,valuation,optional market field
+daily_basic,,ps_ttm,ps_ttm,facts/market_daily_basic,yes,valuation,optional market field
+daily_basic,,dv_ratio,dv_ratio,facts/market_daily_basic,yes,valuation,optional market field
+daily_basic,,dv_ttm,dv_ttm,facts/market_daily_basic,yes,valuation,optional market field
+daily_basic,,total_mv,total_mv,facts/market_daily_basic,yes,valuation,standardized to CNY
+daily_basic,,circ_mv,circ_mv,facts/market_daily_basic,yes,valuation,standardized to CNY
+adj_factor,,adj_factor,adj_factor,facts/market_daily,yes,price_adjustment,used for adjusted price construction
+stk_limit,,pre_close,limit_pre_close,facts/market_stk_limit,yes,filter,limit-state calculation
+stk_limit,,up_limit,up_limit,facts/market_stk_limit,yes,filter,limit-state calculation
+stk_limit,,down_limit,down_limit,facts/market_stk_limit,yes,filter,limit-state calculation
+suspend_d,,suspend_timing,suspend_timing,facts/market_suspend_d,no,audit,kept in fact table only
+suspend_d,,suspend_type,suspend_type,facts/market_suspend_d,no,audit,kept in fact table only
+suspend_d,,trade_date,is_suspended,facts/market_suspend_d,yes,filter,derived 0/1 suspension flag
+income_vip,33,total_revenue,fin_total_revenue,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+income_vip,33,revenue,fin_revenue,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+income_vip,33,operate_profit,fin_operate_profit,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+income_vip,33,total_profit,fin_total_profit,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+income_vip,33,n_income_attr_p,fin_n_income_attr_p,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+income_vip,33,basic_eps,fin_basic_eps,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+income_vip,33,diluted_eps,fin_diluted_eps,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+balancesheet_vip,36,total_assets,fin_total_assets,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+balancesheet_vip,36,total_liab,fin_total_liab,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+balancesheet_vip,36,total_hldr_eqy_exc_min_int,fin_total_hldr_eqy_exc_min_int,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+cashflow_vip,44,n_cashflow_act,fin_n_cashflow_act,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+cashflow_vip,44,n_cashflow_inv_act,fin_n_cashflow_inv_act,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+cashflow_vip,44,n_cash_flows_fnc_act,fin_n_cash_flows_fnc_act,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,current_ratio,fin_current_ratio,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,quick_ratio,fin_quick_ratio,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,cash_ratio,fin_cash_ratio,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,inv_turn,fin_inv_turn,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ar_turn,fin_ar_turn,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ca_turn,fin_ca_turn,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,fa_turn,fin_fa_turn,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,assets_turn,fin_assets_turn,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ocfps,fin_ocfps,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,retainedps,fin_retainedps,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,cfps,fin_cfps,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,fcff_ps,fin_fcff_ps,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,fcfe_ps,fin_fcfe_ps,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,cogs_of_sales,fin_cogs_of_sales,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,expense_of_sales,fin_expense_of_sales,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,profit_to_gr,fin_profit_to_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,saleexp_to_gr,fin_saleexp_to_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,adminexp_of_gr,fin_adminexp_of_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,finaexp_of_gr,fin_finaexp_of_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,impai_ttm,fin_impai_ttm,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,gc_of_gr,fin_gc_of_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,op_of_gr,fin_op_of_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ebit_of_gr,fin_ebit_of_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,grossprofit_margin,fin_grossprofit_margin,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,netprofit_margin,fin_netprofit_margin,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,roe,fin_roe,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,roe_waa,fin_roe_waa,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,roe_dt,fin_roe_dt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,roa,fin_roa,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,npta,fin_npta,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,roic,fin_roic,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,roe_avg,fin_roe_avg,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,opincome_of_ebt,fin_opincome_of_ebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,investincome_of_ebt,fin_investincome_of_ebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,n_op_profit_of_ebt,fin_n_op_profit_of_ebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,tax_to_ebt,fin_tax_to_ebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,dtprofit_to_profit,fin_dtprofit_to_profit,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,salescash_to_or,fin_salescash_to_or,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ocf_to_or,fin_ocf_to_or,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ocf_to_opincome,fin_ocf_to_opincome,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,capitalized_to_da,fin_capitalized_to_da,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,debt_to_assets,fin_debt_to_assets,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,assets_to_eqt,fin_assets_to_eqt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,dp_assets_to_eqt,fin_dp_assets_to_eqt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ca_to_assets,fin_ca_to_assets,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,nca_to_assets,fin_nca_to_assets,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,tbassets_to_totalassets,fin_tbassets_to_totalassets,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,int_to_talcap,fin_int_to_talcap,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,eqt_to_talcapital,fin_eqt_to_talcapital,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,currentdebt_to_debt,fin_currentdebt_to_debt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,longdeb_to_debt,fin_longdeb_to_debt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ocf_to_shortdebt,fin_ocf_to_shortdebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,debt_to_eqt,fin_debt_to_eqt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,eqt_to_debt,fin_eqt_to_debt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,eqt_to_interestdebt,fin_eqt_to_interestdebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,tangibleasset_to_debt,fin_tangibleasset_to_debt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,tangasset_to_intdebt,fin_tangasset_to_intdebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,tangibleasset_to_netdebt,fin_tangibleasset_to_netdebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ocf_to_debt,fin_ocf_to_debt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ocf_to_interestdebt,fin_ocf_to_interestdebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ocf_to_netdebt,fin_ocf_to_netdebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ebit_to_interest,fin_ebit_to_interest,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,longdebt_to_workingcapital,fin_longdebt_to_workingcapital,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ebitda_to_debt,fin_ebitda_to_debt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,op_to_ebt,fin_op_to_ebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,nop_to_ebt,fin_nop_to_ebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ocf_to_profit,fin_ocf_to_profit,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,cash_to_liqdebt,fin_cash_to_liqdebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,cash_to_liqdebt_withinterest,fin_cash_to_liqdebt_withinterest,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,op_to_liqdebt,fin_op_to_liqdebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,op_to_debt,fin_op_to_debt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,roic_yearly,fin_roic_yearly,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,total_fa_trun,fin_total_fa_trun,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,profit_to_op,fin_profit_to_op,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_profit_to_gr,fin_q_profit_to_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_saleexp_to_gr,fin_q_saleexp_to_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_adminexp_to_gr,fin_q_adminexp_to_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_finaexp_to_gr,fin_q_finaexp_to_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_impair_to_gr_ttm,fin_q_impair_to_gr_ttm,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_gc_to_gr,fin_q_gc_to_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_op_to_gr,fin_q_op_to_gr,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_roe,fin_q_roe,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_dt_roe,fin_q_dt_roe,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_npta,fin_q_npta,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_opincome_to_ebt,fin_q_opincome_to_ebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_investincome_to_ebt,fin_q_investincome_to_ebt,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_dtprofit_to_profit,fin_q_dtprofit_to_profit,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_salescash_to_or,fin_q_salescash_to_or,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_ocf_to_sales,fin_q_ocf_to_sales,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,q_ocf_to_or,fin_q_ocf_to_or,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,cfps_yoy,fin_cfps_yoy,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,op_yoy,fin_op_yoy,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ebt_yoy,fin_ebt_yoy,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+fina_indicator_vip,79,ocf_yoy,fin_ocf_yoy,v_project_financial_asof_daily,yes,finance,quarterly report fact expanded by ann_date as-of
+moneyflow,170,buy_sm_amount,moneyflow_buy_sm_amount,facts/moneyflow,yes,moneyflow,official Tushare amount field; local unit CNY
+moneyflow,170,sell_sm_amount,moneyflow_sell_sm_amount,facts/moneyflow,yes,moneyflow,official Tushare amount field; local unit CNY
+moneyflow,170,buy_md_amount,moneyflow_buy_md_amount,facts/moneyflow,yes,moneyflow,official Tushare amount field; local unit CNY
+moneyflow,170,sell_md_amount,moneyflow_sell_md_amount,facts/moneyflow,yes,moneyflow,official Tushare amount field; local unit CNY
+moneyflow,170,buy_lg_amount,moneyflow_buy_lg_amount,facts/moneyflow,yes,moneyflow,official Tushare amount field; local unit CNY
+moneyflow,170,sell_lg_amount,moneyflow_sell_lg_amount,facts/moneyflow,yes,moneyflow,official Tushare amount field; local unit CNY
+moneyflow,170,buy_elg_amount,moneyflow_buy_elg_amount,facts/moneyflow,yes,moneyflow,official Tushare amount field; local unit CNY
+moneyflow,170,sell_elg_amount,moneyflow_sell_elg_amount,facts/moneyflow,yes,moneyflow,official Tushare amount field; local unit CNY
+moneyflow,170,net_mf_amount,moneyflow_net_mf_amount,facts/moneyflow,yes,moneyflow,official Tushare amount field; local unit CNY
+cyq_perf,293,his_low,cyq_his_low,facts/cyq_perf,yes,chip,official Tushare cyq_perf field
+cyq_perf,293,his_high,cyq_his_high,facts/cyq_perf,yes,chip,official Tushare cyq_perf field
+cyq_perf,293,cost_5pct,cyq_cost_5pct,facts/cyq_perf,yes,chip,official Tushare cyq_perf field
+cyq_perf,293,cost_15pct,cyq_cost_15pct,facts/cyq_perf,yes,chip,official Tushare cyq_perf field
+cyq_perf,293,cost_50pct,cyq_cost_50pct,facts/cyq_perf,yes,chip,official Tushare cyq_perf field
+cyq_perf,293,cost_85pct,cyq_cost_85pct,facts/cyq_perf,yes,chip,official Tushare cyq_perf field
+cyq_perf,293,cost_95pct,cyq_cost_95pct,facts/cyq_perf,yes,chip,official Tushare cyq_perf field
+cyq_perf,293,weight_avg,cyq_weight_avg,facts/cyq_perf,yes,chip,official Tushare cyq_perf field
+cyq_perf,293,winner_rate,cyq_winner_rate,facts/cyq_perf,yes,chip,converted to ratio when source is percent
+cyq_chips,294,price,chip_price,facts/cyq_chips,no,chip,long price distribution bucket price
+cyq_chips,294,percent,chip_percent_raw_pct,facts/cyq_chips,no,chip,long price distribution percent as reported by Tushare
+cyq_chips,294,percent,chip_percent,facts/cyq_chips,no,chip,long price distribution percent normalized to ratio
+cyq_chips,294,price,cyq_chip_price_count,facts/cyq_chips_daily,yes,chip,derived daily count of price buckets
+cyq_chips,294,percent,cyq_chip_percent_sum,facts/cyq_chips_daily,yes,chip,derived daily sum of normalized bucket weights
+cyq_chips,294,price,cyq_chip_price_min,facts/cyq_chips_daily,yes,chip,derived daily minimum chip price
+cyq_chips,294,price,cyq_chip_price_max,facts/cyq_chips_daily,yes,chip,derived daily maximum chip price
+cyq_chips,294,price,cyq_chip_mode_price,facts/cyq_chips_daily,yes,chip,derived daily price bucket with maximum weight
+cyq_chips,294,percent,cyq_chip_mode_percent,facts/cyq_chips_daily,yes,chip,derived daily maximum normalized bucket weight
+cyq_chips,294,price,cyq_chip_weight_avg_price,facts/cyq_chips_daily,yes,chip,derived daily weighted average chip price
+cyq_chips,294,price,cyq_chip_price_std,facts/cyq_chips_daily,yes,chip,derived daily standard deviation of chip prices
+cyq_chips,294,price,cyq_chip_cost_10pct,facts/cyq_chips_daily,yes,chip,derived weighted 10pct cost price
+cyq_chips,294,price,cyq_chip_cost_25pct,facts/cyq_chips_daily,yes,chip,derived weighted 25pct cost price
+cyq_chips,294,price,cyq_chip_cost_50pct,facts/cyq_chips_daily,yes,chip,derived weighted 50pct cost price
+cyq_chips,294,price,cyq_chip_cost_75pct,facts/cyq_chips_daily,yes,chip,derived weighted 75pct cost price
+cyq_chips,294,price,cyq_chip_cost_90pct,facts/cyq_chips_daily,yes,chip,derived weighted 90pct cost price
+stk_factor_pro,328,asi_qfq,tech_asi_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,asit_qfq,tech_asit_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,atr_qfq,tech_atr_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,bbi_qfq,tech_bbi_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,bias1_qfq,tech_bias1_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,bias2_qfq,tech_bias2_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,bias3_qfq,tech_bias3_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,boll_lower_qfq,tech_boll_lower_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,boll_mid_qfq,tech_boll_mid_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,boll_upper_qfq,tech_boll_upper_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,brar_ar_qfq,tech_brar_ar_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,brar_br_qfq,tech_brar_br_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,cci_qfq,tech_cci_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,cr_qfq,tech_cr_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,dfma_dif_qfq,tech_dfma_dif_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,dfma_difma_qfq,tech_dfma_difma_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,dmi_adx_qfq,tech_dmi_adx_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,dmi_adxr_qfq,tech_dmi_adxr_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,dmi_mdi_qfq,tech_dmi_mdi_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,dmi_pdi_qfq,tech_dmi_pdi_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,dpo_qfq,tech_dpo_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,madpo_qfq,tech_madpo_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,ema_qfq_5,tech_ema_qfq_5,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,ema_qfq_10,tech_ema_qfq_10,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,ema_qfq_20,tech_ema_qfq_20,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,ema_qfq_30,tech_ema_qfq_30,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,ema_qfq_60,tech_ema_qfq_60,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,ema_qfq_90,tech_ema_qfq_90,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,emv_qfq,tech_emv_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,maemv_qfq,tech_maemv_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,expma_12_qfq,tech_expma_12_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,expma_50_qfq,tech_expma_50_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,kdj_qfq,tech_kdj_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,kdj_d_qfq,tech_kdj_d_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,kdj_k_qfq,tech_kdj_k_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,ktn_down_qfq,tech_ktn_down_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,ktn_mid_qfq,tech_ktn_mid_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,ktn_upper_qfq,tech_ktn_upper_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,ma_qfq_20,tech_ma_qfq_20,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,macd_qfq,tech_macd_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,macd_dea_qfq,tech_macd_dea_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,macd_dif_qfq,tech_macd_dif_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,mass_qfq,tech_mass_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,ma_mass_qfq,tech_ma_mass_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,mfi_qfq,tech_mfi_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,mtm_qfq,tech_mtm_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,mtmma_qfq,tech_mtmma_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,obv_qfq,tech_obv_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,psy_qfq,tech_psy_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,psyma_qfq,tech_psyma_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,roc_qfq,tech_roc_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,maroc_qfq,tech_maroc_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,rsi_qfq_6,tech_rsi_qfq_6,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,rsi_qfq_24,tech_rsi_qfq_24,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,taq_down_qfq,tech_taq_down_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,taq_mid_qfq,tech_taq_mid_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,taq_up_qfq,tech_taq_up_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,trix_qfq,tech_trix_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,trma_qfq,tech_trma_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,vr_qfq,tech_vr_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,wr_qfq,tech_wr_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,wr1_qfq,tech_wr1_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,xsii_td1_qfq,tech_xsii_td1_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,xsii_td2_qfq,tech_xsii_td2_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,xsii_td3_qfq,tech_xsii_td3_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,xsii_td4_qfq,tech_xsii_td4_qfq,facts/stk_factor_pro,yes,technical,qfq-only local technical field
+stk_factor_pro,328,updays,tech_updays,facts/stk_factor_pro,yes,technical,not price-adjustment-specific
+stk_factor_pro,328,downdays,tech_downdays,facts/stk_factor_pro,yes,technical,not price-adjustment-specific
+stk_factor_pro,328,topdays,tech_topdays,facts/stk_factor_pro,yes,technical,not price-adjustment-specific
+stk_factor_pro,328,lowdays,tech_lowdays,facts/stk_factor_pro,yes,technical,not price-adjustment-specific
+stk_auction_o,,open,auction_o_open,facts/stk_auction_o,no,auction,legacy optional; not in default p4 or project panel
+stk_auction_c,,close,auction_c_close,facts/stk_auction_c,no,auction,legacy optional; not in default p4 or project panel
+report_rc,,eps,report_rc_eps_mean,facts/report_rc_daily,yes,analyst,daily aggregate mean EPS forecast

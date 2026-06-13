@@ -1,0 +1,28 @@
+- template_id: TPL-001
+  family: single_ts
+  expression: "ts_rank({field}, {d})"
+  placeholders:
+    field: ["close"]
+    d: [5, 10, 22]
+  required_fields: []
+  required_groups: []
+  tags: ["core", "timeseries"]
+
+- template_id: TPL-002
+  family: single_cross
+  expression: "rank({field})"
+  placeholders:
+    field: ["close", "volume"]
+  required_fields: []
+  required_groups: []
+  tags: ["core", "cross"]
+
+- template_id: TPL-003
+  family: single_group
+  expression: "group_rank({field}, {group})"
+  placeholders:
+    field: ["close", "volume"]
+    group: ["industry", "sector"]
+  required_fields: []
+  required_groups: []
+  tags: ["core", "group"]

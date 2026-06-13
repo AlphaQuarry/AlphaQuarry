@@ -1,0 +1,75 @@
+﻿.venv/
+.pytest_cache/
+.claude/
+__pycache__/
+*.pyc
+node_modules/
+dashboard/frontend/dist/
+dashboard/frontend/*.tsbuildinfo
+dashboard/frontend/vite.config.js
+dashboard/frontend/vite.config.d.ts
+
+# local private configs / secrets
+configs/datasource.local.yaml
+configs/live.local.yaml
+.env
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+*.tar.gz
+
+# generated data artifacts
+data/lake/
+data/duckdb/
+data/alpha_universe_store/
+
+# notebook caches
+.ipynb_checkpoints/
+
+# Jupyter notebooks (root-level research notebooks)
+*.ipynb
+
+# IDE
+.idea/
+.vscode/
+.opencode/
+.omo/
+
+# Claude Code local config
+.claude/
+CLAUDE.md
+
+# Development planning (local only)
+plan/
+
+# Logs and temp
+logs/
+data/tmp/
+
+# Artifacts (generated analysis outputs)
+artifacts/
+
+# Large data files (safety net)
+*.duckdb
+*.parquet
+
+# Development reports (not for release)
+docs/phase_*.md
+docs/feedback_v*_mutation_report.md
+docs/wq_operator_implementation_report.md
+docs/next_phase_data_quality_workflow.md
+
+# Tool caches
+.mypy_cache/
+.ruff_cache/
+
+# Temporary files
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db

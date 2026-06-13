@@ -1,0 +1,7 @@
+- template_id: TPL-501
+  family: sentiment
+  expression: "zscore(ts_mean({field}, {d}))"
+  placeholders:
+    field: ["sentiment_score"]
+    d: [10]
+  tags: ["sentiment"]

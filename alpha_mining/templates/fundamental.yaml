@@ -1,0 +1,9 @@
+- template_id: TPL-201
+  family: fundamental
+  expression: "group_rank(ts_zscore({field}, {d}), {group})"
+  placeholders:
+    field: ["pe_ttm"]
+    d: [66]
+    group: ["industry"]
+  required_groups: ["industry"]
+  tags: ["fundamental", "group"]

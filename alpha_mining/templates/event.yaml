@@ -1,0 +1,8 @@
+- template_id: TPL-1001
+  family: event
+  expression: "if_else(days_from_last_change({field}) < {k}, rank({alpha_field}), 0)"
+  placeholders:
+    field: ["earnings_flag"]
+    k: [5]
+    alpha_field: ["close"]
+  tags: ["event"]

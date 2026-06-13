@@ -1,0 +1,114 @@
+# 生产运行模板 - 用于长期持续因子挖掘
+# 预计运行时间: 持续运行
+# 适用场景: 每日自动运行、因子库持续扩充
+# 用法: python scripts/run_closed_loop.py --config configs/closed_loop_production.yaml
+
+universe_name: cn_all
+universe_base_dir: data/alpha_universe_store
+
+# --- 数据源 ---
+source_backend: duckdb
+duckdb_path: data/duckdb/market.duckdb
+source_view: v_project_panel_cn_a
+source_date_range:
+  - "2016-01-01"
+  - "2026-01-01"
+enable_source_chunk_loading: true
+source_chunk_mem_warn_mb: 2560
+source_chunk_mem_hard_limit_mb: 4096
+
+# --- 持续运行参数 ---
+max_iterations: 0   # 0 = 无限循环
+request_new_alphas: 5
+batch_size: 5
+max_eval_expressions: 80
+search_mode: layered_v2
+layer_max_order: 4
+layer_max_candidates: 500
+
+# --- 搜索空间优化 (P0) ---
+enable_feedback_mutation: true
+field_rotation_focus_count: 3   # 每轮聚焦 3 个字段
+budget_rotation_mode: round_robin
+
+# --- Mutation 配置 ---
+mutation_budget_ratio: 0.15
+mutation_max_children_per_parent: 3
+mutation_fragment_cooldown_batches: 3
+mutation_fragment_max_age_batches: 50
+mutation_stateful_ratio_cap: 0.10
+
+# --- 反馈配置 ---
+feedback:
+  enabled: true
+  exploit_ratio: 0.55
+  min_explore_ratio: 0.30
+  lookback_batches: 50
+  cooldown_lookback: 10
+
+# --- 自适应探索 ---
+adaptive_exploration: true
+exploration_window: 10
+exploration_max_ratio: 0.60
+exploration_boost_threshold: 3
+
+# --- 分析配置 ---
+analysis_period: 1
+analysis_layers: 10
+analysis_level_mode: light_then_full_on_survivors
+analysis_include_robustness: true
+analysis_robust_periods:
+  - 1
+  - 5
+  - 10
+  - 20
+
+# --- 样本分割 ---
+sample_split:
+  train_start: "2016-01-01"
+  train_end: "2024-12-31"
+  validation_start: "2025-01-01"
+  validation_end: "2025-12-31"
+  oos_start: "2026-01-01"
+
+# --- 可选分析 ---
+include_double_sort: true
+include_sample_split_analysis: true
+visualization_png:
+  enabled: false
+
+# --- 存储管理 ---
+candidate_artifact_retention_enabled: true
+candidate_artifact_retention_max_batches: 200
+candidate_artifact_retention_days: 30
+run_health_retention_enabled: true
+run_health_retention_max_lines: 5000
+run_health_retention_days: 90
+
+idle_sleep_seconds: 5
+error_backoff_seconds: 10
+
+# --- 基础字段配置 ---
+date_col: date
+code_col: code
+group_fields:
+  - industry
+  - sector
+vector_fields: []
+base_frame_cols:
+  - date
+  - code
+  - pct_chg
+  - circ_mv
+
+field_universe:
+  allow_return_history_fields: false
+  exclude_label_like_fields: true
+  exclude_fields:
+    - pct_chg
+    - ret_1d
+    - future_return
+    - ret_exec_cc_1d
+    - target
+    - label
+    - universe

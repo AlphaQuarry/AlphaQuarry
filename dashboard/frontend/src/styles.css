@@ -1,0 +1,44 @@
+@import "./styles/layout.css";
+@import "./styles/toolbar.css";
+@import "./styles/table.css";
+@import "./styles/detail.css";
+@import "./styles/data.css";
+
+:root {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #111827;
+  background: #344052;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 1120px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+@media (max-width: 1280px) {
+  body {
+    min-width: 760px;
+  }
+}

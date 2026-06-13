@@ -1,0 +1,7 @@
+- template_id: TPL-601
+  family: options
+  expression: "rank(ts_zscore({field}, {d}))"
+  placeholders:
+    field: ["iv_skew"]
+    d: [22]
+  tags: ["options"]

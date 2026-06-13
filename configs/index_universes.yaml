@@ -1,0 +1,50 @@
+index_universes:
+  hs300:
+    display_name: "沪深300"
+    required: true
+    enabled: true
+    candidate_codes: ["000300.SH", "399300.SZ"]
+    candidate_symbols: ["000300", "399300"]
+    candidate_names: ["沪深300", "沪深300指数"]
+  csi500:
+    display_name: "中证500"
+    required: true
+    enabled: true
+    candidate_codes: ["000905.SH", "399905.SZ"]
+    candidate_symbols: ["000905", "399905"]
+    candidate_names: ["中证500", "中证500指数"]
+  csi1000:
+    display_name: "中证1000"
+    required: true
+    enabled: true
+    candidate_codes: ["000852.SH", "399852.SZ"]
+    candidate_symbols: ["000852", "399852"]
+    candidate_names: ["中证1000", "中证1000指数"]
+  csi2000:
+    display_name: "中证2000"
+    required: true
+    enabled: true
+    candidate_codes: ["932000.CSI", "000932.SH"]
+    candidate_symbols: ["932000", "000932"]
+    candidate_names: ["中证2000", "中证2000指数"]
+  csi_all_share:
+    display_name: "中证全指"
+    required: true
+    enabled: true
+    candidate_codes: ["000985.SH", "399985.SZ"]
+    candidate_symbols: ["000985", "399985"]
+    candidate_names: ["中证全指", "中证全指指数"]
+  cnindex2000:
+    display_name: "国证2000"
+    required: false
+    enabled: true
+    candidate_codes: ["399303.SZ"]
+    candidate_symbols: ["399303"]
+    candidate_names: ["国证2000", "国证2000指数"]
+  sme_composite:
+    display_name: "中小综指"
+    required: false
+    enabled: true
+    candidate_codes: ["399101.SZ"]
+    candidate_symbols: ["399101"]
+    candidate_names: ["中小综指", "中小板综", "中小企业板综"]

@@ -1,0 +1,85 @@
+# 快速验证模板 - 用于验证闭环流程是否正常工作
+# 预计运行时间: 2-5 分钟
+# 适用场景: 首次使用、调试配置、验证优化效果
+# 用法: python scripts/run_closed_loop.py --config configs/closed_loop_quick.yaml
+
+universe_name: cn_test
+universe_base_dir: data/alpha_universe_store
+
+# --- 数据源 ---
+source_backend: duckdb
+duckdb_path: data/duckdb/market.duckdb
+source_view: v_project_panel_cn_a
+source_date_range:
+  - "2024-01-01"
+  - "2025-01-01"
+enable_source_chunk_loading: false
+
+# --- 快速验证参数 ---
+max_iterations: 3
+request_new_alphas: 3
+batch_size: 3
+max_eval_expressions: 30
+search_mode: layered_v2
+layer_max_order: 2
+layer_max_candidates: 100
+
+# --- 搜索空间优化 (P0) ---
+enable_feedback_mutation: false
+field_rotation_focus_count: 0  # 快速验证不需要轮转
+budget_rotation_mode: none
+
+# --- 分析配置 (最小化) ---
+analysis_period: 1
+analysis_layers: 5
+analysis_level_mode: light
+analysis_include_robustness: false
+
+# --- 禁用可选功能 ---
+include_double_sort: false
+include_sample_split_analysis: false
+visualization_png:
+  enabled: false
+bucket_quality_lite_enabled: false
+phase_metrics:
+  enabled: false
+
+# --- 样本分割 ---
+sample_split:
+  train_start: "2024-01-01"
+  train_end: "2024-09-30"
+  validation_start: "2024-10-01"
+  validation_end: "2024-12-31"
+
+# --- 存储管理 ---
+candidate_artifact_retention_enabled: true
+candidate_artifact_retention_max_batches: 10
+candidate_artifact_retention_days: 7
+run_health_retention_enabled: true
+run_health_retention_max_lines: 100
+
+idle_sleep_seconds: 2
+error_backoff_seconds: 5
+
+# --- 基础字段配置 ---
+date_col: date
+code_col: code
+group_fields:
+  - industry
+vector_fields: []
+base_frame_cols:
+  - date
+  - code
+  - pct_chg
+  - circ_mv
+
+field_universe:
+  allow_return_history_fields: false
+  exclude_label_like_fields: true
+  exclude_fields:
+    - pct_chg
+    - ret_1d
+    - future_return
+    - target
+    - label
+    - universe
