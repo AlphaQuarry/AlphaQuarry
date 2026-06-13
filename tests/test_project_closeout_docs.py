@@ -8,7 +8,7 @@ def test_readme_contains_concept_map_and_dashboard_security_boundary() -> None:
 
     assert "Data Lake -> DuckDB -> Universe Store -> Closed Loop -> Analysis Run -> Factor Library -> Superalpha -> Live" in text
     assert "127.0.0.1" in text
-    assert "do not expose" in text.lower()
+    assert "do not expose" in text.lower() or "不要暴露" in text
 
 
 def test_quickstart_keeps_dashboard_local_only_boundary() -> None:
