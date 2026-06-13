@@ -90,5 +90,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Maintenance checklist
 - Tushare points reference
 
-[Unreleased]: https://github.com/pengfeijiang320-eng/AlphaQuarry/compare/v0.1.0-alpha...HEAD
-[0.1.0-alpha]: https://github.com/pengfeijiang320-eng/AlphaQuarry/releases/tag/v0.1.0-alpha
+[Unreleased]: https://github.com/AlphaQuarry/AlphaQuarry/compare/v0.1.0-alpha...HEAD
+[0.1.0-alpha]: https://github.com/AlphaQuarry/AlphaQuarry/releases/tag/v0.1.0-alpha

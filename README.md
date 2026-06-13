@@ -2,7 +2,7 @@
 
 **闭环 Alpha 因子挖掘与研究平台 / Closed-loop Alpha Mining & Factor Research Platform for China A-Share Market**
 
-[![CI](https://github.com/pengfeijiang320-eng/AlphaQuarry/actions/workflows/ci.yml/badge.svg)](https://github.com/pengfeijiang320-eng/AlphaQuarry/actions/workflows/ci.yml)
+[![CI](https://github.com/AlphaQuarry/AlphaQuarry/actions/workflows/ci.yml/badge.svg)](https://github.com/AlphaQuarry/AlphaQuarry/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
